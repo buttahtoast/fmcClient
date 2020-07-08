@@ -22,4 +22,4 @@ Usage of fmcCLI:
   -user string
     	API Username (default "admin")
 */
-package main // import "github.com/chifu1234/fmcCLI"
+package main // import "github.com/kubernetli/fmcClient/cmd/fmcCLI"
