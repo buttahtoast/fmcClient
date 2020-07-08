@@ -34,20 +34,20 @@ jobs:
 
     - name: Build
       run: |
-        go build -v cmd/fmcCLI
-        go build -v pkg/fmcClient
+        go build -v github.com/kubernetli/fmcClient/cmd/fmcCLI
+        go build -v github.com/kubernetli/fmcClient/pkg/fmcClient
 
     - name: Test
       run: |
-        go test -v cmd/fmcCLI
-        go test -v pkg/fmcClient
+        go test -v github.com/kubernetli/fmcClient/cmd/fmcCLI
+        go test -v github.com/kubernetli/fmcClient/pkg/fmcClient
 
     - name: go-crossbuild
       uses: izumin5210/action-go-crossbuild@v1.0.0
       with:
         # An application name
         name: fmcCLI
-        package: ./cmd/fmcCLI
+        package: github.com/kubernetli/fmcClient/cmd/fmcCLI
         # Space or comma separated list of GOARCH
     - uses: softprops/action-gh-release@v1
       with:
