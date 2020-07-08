@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/chifu1234/fmcClient"
+	"github.com/kubernetli/fmcClient/pkg/fmcClient"
 )
 
 func main() {
