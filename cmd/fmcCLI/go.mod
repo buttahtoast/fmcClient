@@ -1,7 +1,5 @@
-module github.com/chifu1234/fmcCLI
+module github.com/kubernetli/fmcClient/cmd/fmcCLI
 
 go 1.14
 
-require github.com/chifu1234/fmcClient v0.0.0-20200705192634-e8cb3ddf204b
-
-replace github.com/chifu1234/fmcClient v0.0.0-20200705192634-e8cb3ddf204b => /home/chifu/go/src/github.com/chifu1234/fmcClient
+require github.com/kubernetli/fmcClient/pkg/fmcClient v0.0.0-20200707130621-0142f917c9d1

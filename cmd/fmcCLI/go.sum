@@ -1,4 +1,4 @@
-github.com/chifu1234/fmcClient v0.0.0-20200704210844-be6dcc496ad5 h1:oOkdqlfi8tG7alR+1jhYlQzlStxz6yKtUHuF8BEX9NY=
-github.com/chifu1234/fmcClient v0.0.0-20200704210844-be6dcc496ad5/go.mod h1:9yhNFhh+QEeuySO9k0ZCU/SibTcaTcieg3ZMW45NsjY=
-github.com/chifu1234/fmcClient v0.0.0-20200705192634-e8cb3ddf204b h1:Rt6umQdwbOecZpFwMOGDeUGKJAaehf2U6y0zRBrAwQ8=
-github.com/chifu1234/fmcClient v0.0.0-20200705192634-e8cb3ddf204b/go.mod h1:Y0eAn2v5/NzJ/jlAl+ppV7TmBpNyfoyJ0oiAW3nos8Y=
+github.com/kubernetli/fmcClient v0.0.0-20200707125305-575ca8bc7328 h1:VgSF9/8ZFnWqiMwddH092hO14FsTSEOVzkK4M8IIQ1I=
+github.com/kubernetli/fmcClient v0.0.0-20200707130621-0142f917c9d1 h1:rQJDGXBhay+4+ci04YWfMqOGVzVhB6qAApEpOZ6Yh5s=
+github.com/kubernetli/fmcClient/pkg/fmcClient v0.0.0-20200707130621-0142f917c9d1 h1:lu+mBBq9O4heA55KrhjnZAv9U6hYy+AGLRgG+0IqMvw=
+github.com/kubernetli/fmcClient/pkg/fmcClient v0.0.0-20200707130621-0142f917c9d1/go.mod h1:+wtrAqTli4xKpINfigNhECJyTFZzrL8rax1nMS9aTbg=
