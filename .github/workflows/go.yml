@@ -33,16 +33,21 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v .
+      run: |
+        go build -v cmd/fmcCLI
+        go build -v pkg/fmcClient
 
     - name: Test
-      run: go test -v .
+      run: |
+        go test -v cmd/fmcCLI
+        go test -v pkg/fmcClient
 
     - name: go-crossbuild
       uses: izumin5210/action-go-crossbuild@v1.0.0
       with:
         # An application name
         name: fmcCLI
+        package: ./cmd/fmcCLI
         # Space or comma separated list of GOARCH
     - uses: softprops/action-gh-release@v1
       with:
