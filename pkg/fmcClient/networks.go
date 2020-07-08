@@ -53,6 +53,7 @@ type CreateNetworkInput struct {
 	ID          string `json:"id"`
 }
 
+// UpdateNetworkOutput output format .
 type UpdateNetworkOutput struct {
 	Links struct {
 		Self   string `json:"self"`
@@ -154,6 +155,7 @@ func (c *Client) UpdateNetworks(i CreateNetworkInput) (*UpdateNetworkOutput, err
 	}
 	req.Body = ioutil.NopCloser(bytes.NewReader(t))
 	res := UpdateNetworkOutput{}
+
 	// create Pointer for Network Struct
 	err = c.sendRequest(req, &res)
 	if err != nil {
