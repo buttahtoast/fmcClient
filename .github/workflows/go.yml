@@ -47,7 +47,7 @@ jobs:
       with:
         # An application name
         name: fmcCLI
-        package: ./cmd/fmcCLI
+        package: github.com/kubernetli/fmcClient/cmd/fmcCLI
         # Space or comma separated list of GOARCH
     - uses: softprops/action-gh-release@v1
       with:
