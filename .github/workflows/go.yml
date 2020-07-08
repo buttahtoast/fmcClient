@@ -35,12 +35,12 @@ jobs:
     - name: Build
       run: |
         go build -v github.com/kubernetli/fmcClient/cmd/fmcCLI
-        go build -v github.com/kubernetli/fmcClientpkg/fmcClient
+        go build -v github.com/kubernetli/fmcClient/pkg/fmcClient
 
     - name: Test
       run: |
         go test -v github.com/kubernetli/fmcClient/cmd/fmcCLI
-        go test -v github.com/kubernetli/fmcClientpkg/fmcClient
+        go test -v github.com/kubernetli/fmcClient/pkg/fmcClient
 
     - name: go-crossbuild
       uses: izumin5210/action-go-crossbuild@v1.0.0
