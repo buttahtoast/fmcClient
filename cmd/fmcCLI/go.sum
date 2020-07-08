@@ -1,4 +1,3 @@
-github.com/kubernetli/fmcClient v0.0.0-20200707125305-575ca8bc7328 h1:VgSF9/8ZFnWqiMwddH092hO14FsTSEOVzkK4M8IIQ1I=
 github.com/kubernetli/fmcClient v0.0.0-20200707130621-0142f917c9d1 h1:rQJDGXBhay+4+ci04YWfMqOGVzVhB6qAApEpOZ6Yh5s=
 github.com/kubernetli/fmcClient/pkg/fmcClient v0.0.0-20200707130621-0142f917c9d1 h1:lu+mBBq9O4heA55KrhjnZAv9U6hYy+AGLRgG+0IqMvw=
 github.com/kubernetli/fmcClient/pkg/fmcClient v0.0.0-20200707130621-0142f917c9d1/go.mod h1:+wtrAqTli4xKpINfigNhECJyTFZzrL8rax1nMS9aTbg=
