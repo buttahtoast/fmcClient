@@ -34,13 +34,13 @@ jobs:
 
     - name: Build
       run: |
-        go build -v kubernetli/fmcClient/cmd/fmcCLI
-        go build -v kubernetli/fmcClientpkg/fmcClient
+        go build -v github.com/kubernetli/fmcClient/cmd/fmcCLI
+        go build -v github.com/kubernetli/fmcClientpkg/fmcClient
 
     - name: Test
       run: |
-        go test -v kubernetli/fmcClient/cmd/fmcCLI
-        go test -v kubernetli/fmcClientpkg/fmcClient
+        go test -v github.com/kubernetli/fmcClient/cmd/fmcCLI
+        go test -v github.com/kubernetli/fmcClientpkg/fmcClient
 
     - name: go-crossbuild
       uses: izumin5210/action-go-crossbuild@v1.0.0
