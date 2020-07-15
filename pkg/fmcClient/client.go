@@ -92,6 +92,8 @@ func (c *Client) login() (*Client, error) {
 func (c *Client) sendRequest(req *http.Request, v interface{}) error {
 	req.Header.Set("Content-Type", "application/json; charset=utf-8")
 	req.Header.Set("X-Auth-Access-Token", c.accessToken)
+	//c.HTTPClient.Timeout
+	//t.HTTPClient.Timeout = time.Second * 6000
 
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {

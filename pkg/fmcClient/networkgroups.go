@@ -70,7 +70,7 @@ type NetworkGroupsInput struct {
 func (c *Client) GetNetworkGroups() (*NetworkGroups, error) {
 	// todo: implement limits
 	// todo: implement filtering
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networkgroups?expanded=true", c.baseURL, c.Domain), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networkgroups?limit=10000&expanded=true", c.baseURL, c.Domain), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c *Client) GetNetworkGroups() (*NetworkGroups, error) {
 
 // CreateNetworkGroups will create a Network from FMC
 func (c *Client) CreateNetworkGroups(i string) (*NetworkGroups, error) {
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networks", c.baseURL, c.Domain), nil)
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networkgroups", c.baseURL, c.Domain), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -107,6 +107,20 @@ func (c *Client) CreateNetworkGroups(i string) (*NetworkGroups, error) {
 	return &res, nil
 }
 
+// SearchNetworkGroups .
+func (c *Client) SearchNetworkGroups(network *NetworkGroupsInput, networks *NetworkGroups) (int, error) {
+	var (
+		err error
+	)
+	if err != nil {
+		return 0, err
+	}
+	idx := sort.Search(len(networks.Items), func(i int) bool {
+		return string(networks.Items[i].Name) >= network.Name
+	})
+	return idx, err
+}
+
 // UpdateNetworkGroupsByObject will overwrite a Network Object
 func (c *Client) UpdateNetworkGroupsByObject(i string) (*NetworkGroups, error) {
 	var (
@@ -115,14 +129,36 @@ func (c *Client) UpdateNetworkGroupsByObject(i string) (*NetworkGroups, error) {
 		res     *NetworkGroups
 	)
 	json.Unmarshal([]byte(i), &network)
-	networks, err := c.GetNetworks()
+	networks, err := c.GetNetworkGroups()
 	if err != nil {
-		return nil, fmt.Errorf("test %v", err)
+		return nil, err
 	}
-	idx := sort.Search(len(networks.Items), func(i int) bool {
-		return string(networks.Items[i].Name) >= network.Name
-	})
-	network.ID = networks.Items[idx].ID
+	idx, err := c.SearchNetworkGroups(&network, networks)
+	if err != nil {
+		return nil, err
+	}
+	// Create Network if not exists
+	if networks.Items[idx].Name != network.Name {
+		// create new object
+		c.CreateNetworkGroups(i)
+		if err != nil {
+			return nil, err
+		}
+		networks, err := c.GetNetworkGroups()
+		if err != nil {
+			return nil, err
+		}
+
+		// Get Network list
+		idx, err := c.SearchNetworkGroups(&network, networks)
+		if err != nil {
+			return nil, err
+		}
+		network.ID = networks.Items[idx].ID
+	} else {
+		network.ID = networks.Items[idx].ID
+	}
+
 	res, err = c.UpdateNetworkGroups(network)
 	if err != nil {
 		return nil, err
@@ -134,7 +170,7 @@ func (c *Client) UpdateNetworkGroupsByObject(i string) (*NetworkGroups, error) {
 
 // UpdateNetworkGroups will overwrite a Network Object
 func (c *Client) UpdateNetworkGroups(i NetworkGroupsInput) (*NetworkGroups, error) {
-	req, err := http.NewRequest("PUT", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networks/%s", c.baseURL, c.Domain, i.ID), nil)
+	req, err := http.NewRequest("PUT", fmt.Sprintf("%s/fmc_config/v1/domain/%s/object/networkgroups/%s", c.baseURL, c.Domain, i.ID), nil)
 	if err != nil {
 		return nil, err
 	}
