@@ -14,7 +14,7 @@ type Args struct {
 	Function    string
 	Cert        string
 	Input       string
-	Timeout     string
+	Timeout     int
 }
 
 // reads/parses user input .
