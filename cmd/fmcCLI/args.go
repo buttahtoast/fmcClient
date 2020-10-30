@@ -27,7 +27,7 @@ func args() *Args {
 	userPtr := flag.String("user", "admin", "API Username")
 	pwPtr := flag.String("pw", "admin", "Username Password")
 	fmcCertPtr := flag.String("cert", "", "adding x509 Certificate if client does not trust the fmc certificate")
-	timeoutPtr := flag.Int("timeout", "60", "timeout")
+	timeoutPtr := flag.Int("timeout", 60, "timeout")
 
 	flag.Parse()
 	return &Args{
