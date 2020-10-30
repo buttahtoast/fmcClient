@@ -42,7 +42,7 @@ func main() {
 	}
 
 	//increase http timeout
-	t.HTTPClient.Timeout = time.Minute * 5
+	t.HTTPClient.Timeout = time.Minute * arg.Timeout
 
 	// run function
 	switch arg.Function {
